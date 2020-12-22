@@ -4,19 +4,25 @@ import React, {Component} from 'react'
 
 class HelloWorld extends Component {
     state = {
-        label: 'World',
+        value: '',
+        //label: 'World',
     }
     // By default label state is World
 
-    _updateLabel = () => this.setState({label: this.props.label})
+    _updateValue = ({target: {value}}) => this.setState(
+        {value}
+//label: this.props.label
+
+    )
 
     render = () => {
-        const {label} = this.state
+        const {value} = this.state
 
         return (
             <div>
-                <h1>Hello {label} !</h1>
-                <button onClick={this._updateLabel}>GO</button>
+                <h1>Hello {value} !</h1>
+                <input value={value} type="text" onChange={this._updateValue}/>
+                <button onClick={this._updateValue}>GO</button>
             </div>
 
         )
@@ -25,7 +31,7 @@ class HelloWorld extends Component {
 //setState method inherit from Commponent to update state of our app
 }
 
-    export default HelloWorld
+export default HelloWorld
 
 
 //avec component quand on utilise JSX obligés d'utiliser render()
@@ -38,3 +44,5 @@ class HelloWorld extends Component {
 //         <p>My component is reusable + modulable with label </p>
 //     </div>
 // )
+        
+
